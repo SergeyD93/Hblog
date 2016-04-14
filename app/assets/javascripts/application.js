@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require vendor_js
 //= require_tree .
 
 function get_parent_id(id)
