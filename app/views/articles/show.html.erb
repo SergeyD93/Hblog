@@ -1,9 +1,34 @@
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+<div id = 'article'>
+  <p>
+    <strong>Author:</strong>
+    <%= User.find_by_id(@article.user_id).login %>
+  </p>
+  <p>
+    <strong>Title:</strong>
+    <%= @article.title %>
+  </p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
+  <p>
+    <strong>Text:</strong>
+    <%= @article.text %>
+  </p>
+  <% if current_user && @article.user_id == current_user.id %>
+    <%= link_to 'Edit', edit_article_path(@article) %>
+  <%end%>
+  <% if current_user %>
+    <%= link_to 'Comment',
+                :action => "comment",
+                :id => @article.id,
+                :remote => true %>
+  <%end%>
+  <span id='show_comments_link'>
+    <%= link_to 'Show comments',
+                :action => "show_comments",
+                :article_id => @article.id,
+                :remote => true %>
+  </span>
+
+</div>
+<div id="comments">
+</div>
+

@@ -1,0 +1,11 @@
+<div class="top">
+  <%= link_to "Home", root_path %>
+  <% if signed_in? %>
+      <%= link_to @current_user.login, current_user %>
+      <%= link_to "Sign out", signout_path, method: "delete" %>
+
+  <% else %>
+      <%= link_to "Sign in", signin_path %>
+      <%= link_to "Sign up", signup_path %>
+  <% end %>
+</div>

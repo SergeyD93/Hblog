@@ -1,0 +1,15 @@
+<div id="new_comment">
+  <%= form_for([@article, @article.comments.build], :remote => true ) do |f| %>
+      <p>
+        <%= f.label :body %><br>
+        <%= f.text_area :body, :required => 'required'%>
+        <%= f.hidden_field :parent_comment_id,
+                           :value => params[:controller] == 'comments' ? params[:id] : nil %>
+        <%= f.hidden_field :user_id,
+                           :value => current_user.id %>
+      </p>
+      <p>
+        <%= f.submit %>
+      </p>
+  <% end %>
+</div>

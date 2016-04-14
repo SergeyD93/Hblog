@@ -1,0 +1,15 @@
+$(document.getElementById('new_comment')).remove();
+show_comment_form();
+
+function show_comment_form()
+{
+  var comment_id ='<%=@comment.id%>_parent-<%=@comment.parent_comment_id%>';
+  var comment = document.getElementById(comment_id);
+  var field_place = comment.getElementsByTagName('div')[2];
+  $(field_place).append('<%= j render "form" %>');
+}
+
+
+
+
+

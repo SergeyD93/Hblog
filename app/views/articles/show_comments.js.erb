@@ -1,0 +1,12 @@
+show_comments($(document.getElementById("comments")));
+
+function show_comments(elem)
+{
+  document.getElementById('show_comments_link').remove();
+
+  elem.append('<h2 id = "comments_title">Comments</h2>');
+  elem.append('<%=j render @article.comments%>');
+
+  var comments = document.getElementsByClassName('comment');
+  build_tree(comments);
+}

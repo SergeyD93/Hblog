@@ -1,0 +1,39 @@
+<h1>New User</h1>
+<%= form_for :user, url: {action: "create"} do |f| %>
+
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            There is some errors:
+          </h2>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <p>
+      <%= f.label :Login %><br>
+      <%= f.text_field :login %>
+    </p>
+
+    <p>
+      <%= f.label :"Avatar link" %><br>
+      <%= f.text_field :avatar_link %>
+    </p>
+
+    <p>
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </p>
+
+    <p>
+      <%= f.label :"Check password" %><br>
+      <%= f.password_field :password_confirmation %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>

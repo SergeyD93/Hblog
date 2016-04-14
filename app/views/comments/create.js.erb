@@ -1,0 +1,33 @@
+$(document.getElementById('new_comment')).remove();
+show_comments($(document.getElementById("comments")));
+
+function show_comments(elem)
+{
+  if(document.getElementById("comments_title"))
+  {
+    if('<%=@comment.parent_comment_id%>' > 0)
+    {
+      add_comments(elem);
+    }
+    else
+    {
+      $(document.getElementById('no_comments_info')).remove();
+      elem.append('<%=j render @comment%>');
+    }
+  }
+  else
+  {
+    document.getElementById('show_comments_link').remove();
+    add_comments(elem);
+  }
+}
+
+function add_comments(elem)
+{
+  elem.html('');
+  elem.append('<h2 id = "comments_title">Comments</h2>');
+  elem.append('<%=j render @article.comments%>');
+  var comments = document.getElementsByClassName('comment');
+  build_tree(comments);
+}
+
