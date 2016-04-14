@@ -8,9 +8,10 @@
         <%= image_tag (user_by_id(article.user_id).avatar_link), width: 20, height: 20 %>
         <%= user_by_id(article.user_id).login %>
         <%= link_to article.title, article_path(article) , class: "article_title"%>
+
         <% if current_user && article.user_id == current_user.id %>
           <%= link_to 'Edit', edit_article_path(article)%>
-          <%= concat link_to 'Destroy', article_path(article),
+          <%= link_to 'Destroy', article_path(article),
                            method: :delete,
                            id: article.id,
                            data: { confirm: 'Are you sure?',
