@@ -3,6 +3,7 @@ require 'digest'
 class User < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
+  has_many :articles , dependent: :destroy
 
   attr_accessor :password
 

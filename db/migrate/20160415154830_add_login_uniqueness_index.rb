@@ -6,5 +6,4 @@ class AddLoginUniquenessIndex < ActiveRecord::Migration
   def down
     remove_index :users, :login
   end
-
 end
