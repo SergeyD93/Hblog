@@ -11,10 +11,14 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
-    respond_to do |format|
-      format.js
-      format.html
+    if @comment.user_id != current_user.id
+      redirect_to articles_path
+    else
+      @comment.destroy
+      respond_to do |format|
+        format.js
+        format.html
+      end
     end
   end
 
