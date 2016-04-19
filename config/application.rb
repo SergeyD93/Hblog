@@ -25,5 +25,6 @@ module Hblog
     config.active_record.raise_in_transactional_callbacks = true
     config.assets.precompile += %w( application.js )
     config.assets.precompile += %w( comment.js.erb )
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
   end
 end
